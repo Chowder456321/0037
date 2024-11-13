@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        /* การตั้งค่าแบบพื้นฐาน */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(45deg, #D3D3D3, #A9A9A9); /* พื้นหลังไล่สีเทา */
+        }
+
+        .container {
+            z-index: 1;
+            padding: 20px;
+            border-radius: 20px;
+            background-color: #fff;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* เพิ่มเงาชัดเจน */
+            text-align: center;
+            color: #ff66b2; /* สีชมพูอ่อน */
+            position: relative;
+        }
+
+        /* เพิ่มการเคลื่อนไหวให้กับตัวอักษร */
+        h1 {
+            animation: floatingText 3s ease-in-out infinite; /* การเคลื่อนไหวลอยๆ */
+        }
+
+        /* กำหนดการเคลื่อนไหวของตัวอักษร */
+        @keyframes floatingText {
+            0% {
+                transform: translateY(-10px); /* เริ่มต้นที่สูงขึ้น */
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(10px); /* ลงมาด้านล่างเล็กน้อย */
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10px); /* กลับขึ้นไปที่เดิม */
+                opacity: 0.8;
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #ff66b2; /* สีชมพู */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* เงาที่ปุ่ม */
+        }
+
+        .btn:hover {
+            background-color: #ff3399; /* สีชมพูเข้ม */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* เงาเข้มขึ้นขณะ hover */
+        }
+
+        .audio-container {
+            margin-top: 20px;
+            text-align: center;
+            background-color: #fff;
+            border: 4px solid #ff66b2; /* สีชมพู */
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+        }
+
+        /* กำหนดขนาดและตำแหน่งของ iframe */
+        .audio-container iframe {
+            width: 100%;
+            max-width: 560px;
+            height: 80px; /* ความสูงของแถบเล่นเพลง */
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* สไตล์สำหรับรูปภาพที่จะแสดง */
+        .celebration-image {
+            display: none;
+            width: 100%;
+            height: auto; /* ให้รูปมีความสูงอัตโนมัติตามสัดส่วน */
+            margin-top: 20px;
+            animation: celebrateAnimation 1s ease-out;
+        }
+
+        /* การเคลื่อนไหวของรูปภาพ */
+        @keyframes celebrateAnimation {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ʜᴀᴘᴘʏ ʙɪʀᴛʜᴅᴀʏ ɴᴀ ᴋᴜʙ ᴍʏ ʟɪᴛᴛʟᴇ</h1>
+        <div class="cake">🎂</div>
+        <p>𝐈𝐟 𝐭𝐡𝐞𝐫𝐞 𝐢𝐬 𝐨𝐧𝐞 𝐫𝐞𝐚𝐬𝐨𝐧 𝐟𝐨𝐫 𝐦𝐞 𝐭𝐨 𝐭𝐡𝐚𝐧𝐤 𝐆𝐨𝐝 𝐭𝐡𝐞 𝐦𝐨𝐬𝐭, 𝐭𝐡𝐞𝐧 𝐢𝐭 𝐢𝐬 𝐟𝐨𝐫 𝐲𝐨𝐮𝐫 𝐛𝐢𝐫𝐭𝐡! 𝐓𝐡𝐚𝐧𝐤𝐬 𝐟𝐨𝐫 𝐜𝐨𝐦𝐢𝐧𝐠 𝐢𝐧𝐭𝐨 𝐭𝐡𝐢𝐬 𝐰𝐨𝐫𝐥𝐝 𝐚𝐧𝐝 𝐢𝐧𝐭𝐨 𝐦𝐲 𝐥𝐢𝐟𝐞. 𝐇𝐚𝐩𝐩𝐲 𝐛𝐢𝐫𝐭𝐡𝐝𝐚𝐲.</p>
+        <button class="btn" onclick="celebrate()">Celebrate Now</button>
+
+        <!-- รูปภาพที่จะแสดงเมื่อกดปุ่ม -->
+        <img src="c:\Users\Weeraporn\Downloads\Screenshot 2024-11-13 103639.png" alt="Celebration" class="celebration-image" id="celebrationImage">
+    </div>
+
+    <!-- เพิ่มแท็ก iframe สำหรับเพลงจาก Spotify -->
+    <div class="audio-container">
+        <iframe src="https://open.spotify.com/embed/track/5hXcptJwH8dr3s9ibOZUvp?si=3d9681ab45ef4856" width="100%" height="80" frameborder="0" allow="encrypted-media"></iframe>
+    </div>
+
+    <script>
+        function celebrate() {
+            // แสดงรูปภาพเมื่อคลิกปุ่ม
+            var image = document.getElementById('celebrationImage');
+            image.style.display = 'block'; // แสดงรูปภาพ
+        }
+    </script>
+</body>
+</html>
